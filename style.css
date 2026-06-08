@@ -508,6 +508,19 @@ section.active-section {
     font-size: 3rem;
     margin-bottom: 8px;
     flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-thumb {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--glass-border);
 }
 
 .product-info {
@@ -667,27 +680,73 @@ section.active-section {
     padding-top: 10px;
 }
 
-.btn-checkout {
-    width: 100%;
+.checkout-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     margin-top: 15px;
-    padding: 12px;
-    background: var(--success-color);
+}
+
+.checkout-buttons button {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     color: white;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.85rem;
     cursor: pointer;
     transition: transform 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
+    font-family: var(--font-main);
+}
+
+.checkout-buttons button:hover {
+    transform: scale(1.02);
+}
+
+.btn-checkout {
+    background: var(--success-color);
 }
 
 .btn-checkout:hover {
-    transform: scale(1.02);
     box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-payment-mp {
+    background: #009ee3;
+}
+
+.btn-payment-mp:hover {
+    box-shadow: 0 0 15px rgba(0, 158, 227, 0.4);
+}
+
+.btn-payment-tarjeta {
+    background: #6b7280;
+}
+
+.btn-payment-tarjeta:hover {
+    box-shadow: 0 0 15px rgba(107, 114, 128, 0.4);
+}
+
+.btn-transfer {
+    background: var(--primary-color);
+}
+
+.btn-transfer:hover {
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-credit {
+    background: var(--secondary-color, #8b5cf6);
+}
+
+.btn-credit:hover {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
 }
 
 .empty-cart-msg {
@@ -773,6 +832,8 @@ section.active-section {
     position: relative;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     animation: zoomIn 0.3s;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 @keyframes zoomIn {
@@ -811,12 +872,18 @@ section.active-section {
 .form-group select {
     width: 100%;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background: #1e293b;
     border: 1px solid var(--glass-border);
     border-radius: 8px;
     color: white;
     font-family: var(--font-main);
     outline: none;
+}
+
+.form-group select option {
+    background: #1e293b;
+    color: white;
+    padding: 10px;
 }
 
 .form-group input:focus,
@@ -1184,6 +1251,13 @@ section.active-section {
     .product-emoji {
         font-size: 1.5rem;
         margin-bottom: 2px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .product-thumb {
+        width: 50px;
+        height: 50px;
     }
 
     .product-name {
@@ -1232,6 +1306,18 @@ section.active-section {
     background: rgba(99, 102, 241, 0.2);
     color: #6366f1;
     border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.badge-mercadopago {
+    background: rgba(0, 158, 227, 0.2);
+    color: #009ee3;
+    border: 1px solid rgba(0, 158, 227, 0.3);
+}
+
+.badge-tarjeta {
+    background: rgba(107, 114, 128, 0.2);
+    color: #9ca3af;
+    border: 1px solid rgba(107, 114, 128, 0.3);
 }
 
 .client-select-input {

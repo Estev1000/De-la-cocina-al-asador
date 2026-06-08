@@ -27,27 +27,27 @@
             </div>
 
             <ul class="nav-links">
-                <li class="active" onclick="showSection('pos', this)">
+                <li class="active" onclick="showSection('pos', this)" title="Caja - Punto de Venta">
                     <i class="fa-solid fa-cash-register"></i>
                     <span>Caja</span>
                 </li>
-                <li onclick="showSection('inventory', this)">
+                <li onclick="showSection('inventory', this)" title="Gestión de Inventario">
                     <i class="fa-solid fa-boxes-stacked"></i>
                     <span>Inventario</span>
                 </li>
-                <li onclick="showSection('sales', this)">
+                <li onclick="showSection('sales', this)" title="Historial de Ventas">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Ventas</span>
                 </li>
-                <li onclick="showSection('cash-closure', this)">
+                <li onclick="showSection('cash-closure', this)" title="Cierre de Caja Diario">
                     <i class="fa-solid fa-calendar-check"></i>
                     <span>Cierre</span>
                 </li>
-                <li onclick="showSection('clients', this)">
+                <li onclick="showSection('clients', this)" title="Gestión de Clientes">
                     <i class="fa-solid fa-users"></i>
                     <span>Clientes</span>
                 </li>
-                <li onclick="window.location.href='manual.html'">
+                <li onclick="window.location.href='manual.html'" title="Manual de Uso">
                     <i class="fa-solid fa-book"></i>
                     <span>Manual</span>
                 </li>
@@ -90,6 +90,9 @@
                             <button class="tab" onclick="filterCategory('Golosinas')">Golosinas</button>
                             <button class="tab" onclick="filterCategory('Limpieza')">Limpieza</button>
                             <button class="tab" onclick="filterCategory('Varios')">Varios</button>
+                            <button class="tab" onclick="openWeightModal()" title="Vender por peso (balanza)" style="border-color: var(--success-color); color: var(--success-color);">
+                                <i class="fa-solid fa-weight-scale"></i> Peso
+                            </button>
                         </div>
                         <div class="products-grid custom-scroll" id="products-container">
                             <!-- Products injected by JS -->
@@ -170,18 +173,20 @@
                                 <span>Total</span>
                                 <span id="total-display">$0.00</span>
                             </div>
-                            <div class="checkout-buttons" style="display: flex; gap: 10px;">
-                                <button class="btn-checkout" onclick="processSale('cash')" style="flex: 1;">
-                                    <i class="fa-solid fa-money-bill-wave"></i> Cobrar
+                            <div class="checkout-buttons">
+                                <button class="btn-checkout" onclick="processSale('cash')">
+                                    <i class="fa-solid fa-money-bill-wave"></i> Efectivo
                                 </button>
-                                <button class="btn-transfer" onclick="processSale('transfer')"
-                                    title="Cobrar por Transferencia"
-                                    style="flex: 1; background: var(--primary-color); color: white; border: none; padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-family: 'Outfit', sans-serif;">
+                                <button class="btn-payment-mp" onclick="processSale('mercadopago')">
+                                    <i class="fa-solid fa-qrcode"></i> M. Pago
+                                </button>
+                                <button class="btn-payment-tarjeta" onclick="processSale('tarjeta')">
+                                    <i class="fa-solid fa-credit-card"></i> Tarjeta
+                                </button>
+                                <button class="btn-transfer" onclick="processSale('transfer')">
                                     <i class="fa-solid fa-building-columns"></i> Transfer.
                                 </button>
-                                <button class="btn-credit" onclick="processSale('credit')"
-                                    title="Cargar a Cuenta Corriente"
-                                    style="flex: 1; background: var(--secondary-color); color: white; border: none; padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-family: 'Outfit', sans-serif;">
+                                <button class="btn-credit" onclick="processSale('credit')">
                                     <i class="fa-solid fa-user-clock"></i> Fiar
                                 </button>
                             </div>
@@ -299,6 +304,8 @@
                             <div class="closure-row"><span>Total</span><span id="closure-total-display">$0.00</span></div>
                             <div class="closure-row"><span>Efectivo</span><span id="closure-cash-display">$0.00</span></div>
                             <div class="closure-row"><span>Transferencia</span><span id="closure-transfer-display">$0.00</span></div>
+                            <div class="closure-row"><span>Mercado Pago</span><span id="closure-mp-display">$0.00</span></div>
+                            <div class="closure-row"><span>Tarjeta</span><span id="closure-tarjeta-display">$0.00</span></div>
                             <div class="closure-row"><span>Fiado (Cuenta Corriente)</span><span id="closure-credit-display">$0.00</span></div>
                             <div class="closure-row"><span>Pago Deuda</span><span id="closure-debt-payment-display">$0.00</span></div>
                         </div>
@@ -336,6 +343,8 @@
                                 <th>Total</th>
                                 <th>Efectivo</th>
                                 <th>Transfer.</th>
+                                <th>M. Pago</th>
+                                <th>Tarjeta</th>
                                 <th>Fiado</th>
                                 <th>Pago Deuda</th>
                                 <th>Efectivo contado</th>
@@ -415,6 +424,16 @@
                     <label>Emoji/Icono (Opcional)</label>
                     <input type="text" id="new-prod-emoji" placeholder="🥤">
                 </div>
+                <div class="form-group">
+                    <label>Foto del Producto (Opcional)</label>
+                    <input type="file" id="new-prod-image" accept="image/*" onchange="previewProductImage(event)">
+                    <div id="prod-image-preview" style="margin-top:8px;display:none;">
+                        <img src="" alt="Vista previa" style="max-width:100px;max-height:100px;border-radius:8px;border:1px solid var(--glass-border);">
+                        <button type="button" onclick="clearProductImage()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:0.8rem;margin-top:4px;display:block;">
+                            <i class="fa-solid fa-trash-can"></i> Quitar foto
+                        </button>
+                    </div>
+                </div>
                 <button type="submit" class="btn-primary full-width" id="btn-save-prod">Guardar Producto</button>
             </form>
         </div>
@@ -457,6 +476,34 @@
                             style="font-weight: bold; color: var(--accent);"></span></label>
                 </div>
                 <button type="submit" class="btn-primary full-width">Registrar Pago</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Venta por Peso Modal -->
+    <div id="weight-sale-modal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('weight-sale-modal')">&times;</span>
+            <h3>Venta por Peso</h3>
+            <form id="weight-sale-form" onsubmit="handleWeightSale(event)">
+                <div class="form-group">
+                    <label>Producto</label>
+                    <input type="text" id="weight-prod-name" required placeholder="Ej: Carne, Queso, Pollo...">
+                </div>
+                <div class="form-group">
+                    <label>Peso (kg)</label>
+                    <input type="number" id="weight-kg" step="0.001" min="0.001" required placeholder="Ej: 1.200">
+                </div>
+                <div class="form-group">
+                    <label>Precio por kg ($)</label>
+                    <input type="number" id="weight-price-kg" step="0.01" min="0.01" required placeholder="Ej: 1200">
+                </div>
+                <div class="form-group" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
+                    <label style="font-weight: 700; color: var(--success-color);">Total: $<span id="weight-total-preview">0.00</span></label>
+                </div>
+                <button type="submit" class="btn-primary full-width">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
+                </button>
             </form>
         </div>
     </div>
