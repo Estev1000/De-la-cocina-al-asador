@@ -93,6 +93,9 @@
                             <button class="tab" onclick="openWeightModal()" title="Vender por peso (balanza)" style="border-color: var(--success-color); color: var(--success-color);">
                                 <i class="fa-solid fa-weight-scale"></i> Peso
                             </button>
+                            <button class="tab" onclick="openQuickSaleModal()" title="Venta personalizada sin producto registrado" style="border-color: var(--accent); color: var(--accent);">
+                                <i class="fa-solid fa-pen"></i> Venta Rápida
+                            </button>
                         </div>
                         <div class="products-grid custom-scroll" id="products-container">
                             <!-- Products injected by JS -->
@@ -500,6 +503,27 @@
                 </div>
                 <div class="form-group" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
                     <label style="font-weight: 700; color: var(--success-color);">Total: $<span id="weight-total-preview">0.00</span></label>
+                </div>
+                <button type="submit" class="btn-primary full-width">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Venta Rápida Modal -->
+    <div id="quick-sale-modal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('quick-sale-modal')">&times;</span>
+            <h3>Venta Rápida / Personalizada</h3>
+            <form id="quick-sale-form" onsubmit="handleQuickSale(event)">
+                <div class="form-group">
+                    <label>Concepto / Nombre</label>
+                    <input type="text" id="quick-sale-concept" required placeholder="Ej: Café, Lomo, Empanadas...">
+                </div>
+                <div class="form-group">
+                    <label>Monto ($)</label>
+                    <input type="number" id="quick-sale-amount" step="0.01" min="0.01" required placeholder="Ej: 1500">
                 </div>
                 <button type="submit" class="btn-primary full-width">
                     <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
