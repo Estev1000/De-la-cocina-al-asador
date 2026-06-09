@@ -189,6 +189,7 @@
                                 <li><strong>Código de Barras:</strong> Escanea el código con tu lector o escríbelo
                                     manualmente.</li>
                                 <li><strong>Emoji:</strong> Un ícono visual para identificarlo rápido.</li>
+                                <li><strong>Foto del Producto (Opcional):</strong> Podés subir una foto real del producto para identificarlo mejor. Hacé clic en "Elegir archivo" y seleccioná una imagen. Se mostrará una vista previa.</li>
                             </ul>
                         </li>
                         <li>Haz clic en <strong>Guardar Producto</strong>.</li>
@@ -215,10 +216,11 @@
                         <li>Seleccionar un cliente (o usar "Consumidor Final").</li>
                         <li>Cobrar la venta en <strong>Efectivo</strong> o cargarla a una <strong>Cuenta Corriente
                                 (Fiar)</strong>.</li>
+                        <li>Hacé clic en la <strong>foto</strong> de cualquier producto para verla en grande.</li>
                     </ul>
 
                     <h3>2. Inventario</h3>
-                    <p>Administra todos tus productos, controla el stock y actualiza precios.</p>
+                    <p>Administra todos tus productos, controla el stock y actualiza precios. Hacé clic en las fotos de los productos para verlas ampliadas.</p>
 
                     <h3>3. Ventas</h3>
                     <p>Revisa el historial de todas las transacciones realizadas. Puedes exportar esta información a
@@ -278,22 +280,33 @@
                     <div class="manual-header">
                         <h2><i class="fa-solid fa-weight-scale"></i> Venta por Peso (Balanza)</h2>
                     </div>
-                    <p>Para vender productos que se pesan en balanza (carnes, quesos, fiambres, etc.):</p>
+
+                    <h3>Crear productos por peso</h3>
                     <ol class="step-list">
-                        <li>Hacé clic en el botón <strong>"⚖️ Peso"</strong> que está al lado de las categorías.</li>
-                        <li>Completá el formulario:
-                            <ul style="list-style: disc; margin-left: 40px; margin-top: 10px; color: var(--text-muted);">
-                                <li><strong>Producto:</strong> El nombre (ej: Carne, Pollo, Queso).</li>
-                                <li><strong>Peso (kg):</strong> Usá <strong>punto</strong> para los decimales, ej: <strong>1.200</strong> (un kilo docientos).</li>
-                                <li><strong>Precio por kg:</strong> Usá <strong>punto</strong>, ej: <strong>2.000</strong> ($2.000 por kilo).</li>
-                            </ul>
-                        </li>
-                        <li>El sistema calcula automáticamente el total.</li>
-                        <li>Hacé clic en <strong>"Agregar al Carrito"</strong>.</li>
+                        <li>En <strong>Inventario → + Nuevo Producto</strong>, elegí <strong>"Por peso (kg)"</strong> en Tipo de Venta.</li>
+                        <li>Completá nombre, categoría (Carnes, Fiambres, Verduras) y <strong>Precio por kg</strong>. Stock se ignora.</li>
+                        <li>Guardalo. En la grilla del POS se ve con badge <strong>⚖️ Por kg</strong> y precio/kg.</li>
                     </ol>
+
+                    <h3>Vender al toque (sin escribir nada)</h3>
+                    <ol class="step-list">
+                        <li>En el POS, tocá el producto (ej: Costillas de Cerdo). Se abre el modal con nombre y precio/kg ya cargados, solo para ingresar peso.</li>
+                        <li>Ingresá el peso en kg (ej: <strong>1.500</strong>). El total se calcula solo.</li>
+                        <li>Tocá <strong>Agregar al Carrito</strong>. En el carrito se ve: <em>"Costillas de Cerdo (1.500 kg x $2.500,00)"</em>.</li>
+                    </ol>
+
+                    <h3>Modo Balanza (USB OTG)</h3>
+                    <p>Conectá cualquier balanza que funcione como teclado HID por USB OTG:</p>
+                    <ol class="step-list">
+                        <li>En el POS, tocá el botón <strong>Balanza</strong> (al lado del buscador). Se pone verde con animación → ya está activo.</li>
+                        <li>Tocá un producto por peso → se abre el modal con nombre y precio cargados.</li>
+                        <li>Poné el producto en la balanza. El peso se captura <strong>automático</strong> en el campo peso. No escribís nada.</li>
+                        <li>Tocá <strong>Agregar al Carrito</strong> y listo. Sin teclear nombre, precio ni peso.</li>
+                    </ol>
+
                     <div class="tip-box">
                         <i class="fa-solid fa-lightbulb"></i>
-                        <p><strong>Importante:</strong> Siempre usá <strong>punto (.)</strong> para los decimales, no coma. Ej: <strong>1.200 kg</strong> y <strong>$2.000</strong>.</p>
+                        <p><strong>Recordá:</strong> Usá <strong>punto (.)</strong> para decimales. El modo balanza se activa/desactiva con el botón y recuerda tu preferencia.</p>
                     </div>
                 </div>
 

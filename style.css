@@ -521,6 +521,66 @@ section.active-section {
     object-fit: cover;
     border-radius: 12px;
     border: 2px solid var(--glass-border);
+    cursor: zoom-in;
+    transition: transform 0.2s;
+}
+
+.product-thumb:hover {
+    transform: scale(1.05);
+}
+
+/* Lightbox */
+#lightbox-modal {
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+#lightbox-modal .lightbox-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+#lightbox-modal .lightbox-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #fff;
+    z-index: 10000;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.lightbox-close:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+.inv-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    object-fit: cover;
+    vertical-align: middle;
+    margin-right: 6px;
+    cursor: zoom-in;
+    transition: transform 0.2s;
+}
+
+.inv-thumb:hover {
+    transform: scale(1.15);
 }
 
 .product-info {
@@ -1348,4 +1408,124 @@ section.active-section {
     border-color: var(--primary-color);
     background-color: #0f172a;
     /* Even darker on focus */
+}
+
+/* --- Weight Product Badge --- */
+.weight-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.weight-price-kg {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* --- Balanza Toggle --- */
+.balanza-toggle {
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #10b981;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.balanza-toggle:hover {
+    background: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.balanza-toggle.active {
+    background: rgba(16, 185, 129, 0.25);
+    border-color: #10b981;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+    50% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.4); }
+}
+
+/* --- Weight Modal Read-only Fields --- */
+.weight-field-readonly {
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.05) !important;
+    cursor: default;
+}
+
+.weight-field-readonly:focus {
+    border-color: var(--glass-border) !important;
+}
+
+/* --- Product Card Mini Weight Input --- */
+.weight-qty-input {
+    width: 100%;
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    text-align: center;
+    outline: none;
+    margin-top: 6px;
+}
+
+.weight-qty-input:focus {
+    border-color: var(--success-color);
+}
+
+.weight-qty-input::placeholder {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .balanza-toggle {
+        padding: 5px 8px;
+        font-size: 0.7rem;
+    }
+}
+
+/* --- Inventory table tipo badge --- */
+.tipo-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.tipo-badge-unit {
+    background: rgba(99, 102, 241, 0.15);
+    color: #6366f1;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.tipo-badge-weight {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
 }

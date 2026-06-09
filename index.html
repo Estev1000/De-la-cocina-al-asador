@@ -75,8 +75,11 @@
                     <div class="barcode-scanner">
                         <i class="fa-solid fa-barcode"></i>
                         <input type="text" id="barcode-input" placeholder="Escanear código de barras..."
-                            autocomplete="off">
+                            autocomplete="off" onkeypress="handleBarcodeInput(event)">
                     </div>
+                    <button class="balanza-toggle" id="balanza-toggle" onclick="toggleBalanzaMode()" title="Activar modo balanza para capturar peso automático desde balanza USB/Bluetooth">
+                        <i class="fa-solid fa-weight-scale"></i> <span>Balanza</span>
+                    </button>
                     <div class="date-time" id="clock">12:00 PM</div>
                 </header>
 
@@ -89,6 +92,9 @@
                             <button class="tab" onclick="filterCategory('Snacks')">Snacks</button>
                             <button class="tab" onclick="filterCategory('Golosinas')">Golosinas</button>
                             <button class="tab" onclick="filterCategory('Limpieza')">Limpieza</button>
+                            <button class="tab" onclick="filterCategory('Carnes')">Carnes</button>
+                            <button class="tab" onclick="filterCategory('Fiambres')">Fiambres</button>
+                            <button class="tab" onclick="filterCategory('Verduras')">Verduras</button>
                             <button class="tab" onclick="filterCategory('Varios')">Varios</button>
                             <button class="tab" onclick="openWeightModal()" title="Vender por peso (balanza)" style="border-color: var(--success-color); color: var(--success-color);">
                                 <i class="fa-solid fa-weight-scale"></i> Peso
@@ -222,6 +228,7 @@
                             <tr>
                                 <th>Producto</th>
                                 <th>Categoría</th>
+                                <th>Tipo</th>
                                 <th>Precio</th>
                                 <th>Stock</th>
                                 <th>Acciones</th>
@@ -402,22 +409,40 @@
                     <input type="text" id="new-prod-name" required>
                 </div>
                 <div class="form-group">
+                    <label>Tipo de Venta</label>
+                    <select id="new-prod-sale-type" onchange="toggleSaleTypeFields()">
+                        <option value="unit">Por unidad</option>
+                        <option value="weight">Por peso (kg)</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label>Categoría</label>
                     <select id="new-prod-cat">
                         <option value="Bebidas">Bebidas</option>
                         <option value="Snacks">Snacks</option>
                         <option value="Golosinas">Golosinas</option>
                         <option value="Limpieza">Limpieza</option>
+                        <option value="Carnes">Carnes</option>
+                        <option value="Fiambres">Fiambres</option>
+                        <option value="Verduras">Verduras</option>
                         <option value="Varios">Varios</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Precio ($)</label>
-                    <input type="number" id="new-prod-price" min="0" step="0.01" required>
+                <div id="unit-fields">
+                    <div class="form-group">
+                        <label>Precio ($)</label>
+                        <input type="number" id="new-prod-price" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock</label>
+                        <input type="number" id="new-prod-stock" min="0" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Stock</label>
-                    <input type="number" id="new-prod-stock" min="0" required>
+                <div id="weight-fields" style="display:none;">
+                    <div class="form-group">
+                        <label>Precio por kg ($)</label>
+                        <input type="number" id="new-prod-price-kg" min="0" step="0.01" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Código de Barras (Opcional)</label>
@@ -487,8 +512,9 @@
     <div id="weight-sale-modal" class="modal">
         <div class="modal-content glass">
             <span class="close-modal" onclick="closeModal('weight-sale-modal')">&times;</span>
-            <h3>Venta por Peso</h3>
+            <h3 id="weight-modal-title">Venta por Peso</h3>
             <form id="weight-sale-form" onsubmit="handleWeightSale(event)">
+                <input type="hidden" id="weight-prod-id" value="">
                 <div class="form-group">
                     <label>Producto</label>
                     <input type="text" id="weight-prod-name" required placeholder="Ej: Carne, Queso, Pollo...">
@@ -496,6 +522,7 @@
                 <div class="form-group">
                     <label>Peso (kg)</label>
                     <input type="number" id="weight-kg" step="0.001" min="0.001" required placeholder="Ej: 1.200">
+                    <small style="color: var(--text-muted); display: block; margin-top: 4px;">Conectá la balanza y poné el producto. El peso se captura automático si el modo balanza está activado.</small>
                 </div>
                 <div class="form-group">
                     <label>Precio por kg ($)</label>
@@ -529,6 +556,14 @@
                     <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                 </button>
             </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="modal" onclick="closeLightbox(event)">
+        <span class="close-modal lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Foto del producto">
         </div>
     </div>
 
