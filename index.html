@@ -511,6 +511,24 @@
                     <label>Deuda Actual: <span id="current-debt-display"
                             style="font-weight: bold; color: var(--accent);"></span></label>
                 </div>
+                <div class="form-group">
+                    <label>Método de Pago</label>
+                    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px;">
+                        <button type="button" class="btn-payment-method selected" data-method="cash" onclick="selectDebtPaymentMethod(this)">
+                            <i class="fa-solid fa-money-bill-wave"></i> Efectivo
+                        </button>
+                        <button type="button" class="btn-payment-method" data-method="transfer" onclick="selectDebtPaymentMethod(this)">
+                            <i class="fa-solid fa-building-columns"></i> Transfer.
+                        </button>
+                        <button type="button" class="btn-payment-method" data-method="mercadopago" onclick="selectDebtPaymentMethod(this)">
+                            <i class="fa-solid fa-qrcode"></i> M. Pago
+                        </button>
+                        <button type="button" class="btn-payment-method" data-method="tarjeta" onclick="selectDebtPaymentMethod(this)">
+                            <i class="fa-solid fa-credit-card"></i> Tarjeta
+                        </button>
+                    </div>
+                    <input type="hidden" id="debt-payment-method" value="cash">
+                </div>
                 <button type="submit" class="btn-primary full-width">Registrar Pago</button>
             </form>
         </div>
@@ -615,9 +633,12 @@
             <div id="client-history-content" style="max-height: 400px; overflow-y: auto; margin-top: 15px;">
                 <!-- History injected by JS -->
             </div>
-            <div style="display: flex; gap: 10px; margin-top: 16px;">
-                <button class="btn-primary full-width" id="btn-send-whatsapp" onclick="sendWhatsAppSummary()">
-                    <i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp
+            <div style="display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;">
+                <button class="btn-secondary" id="btn-toggle-history" onclick="showClientHistory(clientHistoryCurrentId, true)" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-eye"></i> Mostrar todo
+                </button>
+                <button class="btn-primary" style="flex: 1; min-width: 120px;" id="btn-send-whatsapp" onclick="sendWhatsAppSummary()">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
                 </button>
             </div>
         </div>

@@ -967,6 +967,48 @@ section.active-section {
     background: var(--accent-color);
 }
 
+.btn-payment-method {
+    background: rgba(148, 163, 184, 0.1);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: var(--font-main);
+    transition: all 0.2s;
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+}
+
+.btn-payment-method:hover {
+    background: rgba(148, 163, 184, 0.2);
+    color: #e2e8f0;
+}
+
+.btn-payment-method.selected {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background: rgba(148, 163, 184, 0.15);
+    color: #e2e8f0;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: var(--font-main);
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: rgba(148, 163, 184, 0.25);
+}
+
 .full-width {
     width: 100%;
 }
