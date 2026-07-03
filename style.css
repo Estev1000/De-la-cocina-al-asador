@@ -865,7 +865,7 @@ section.active-section {
 /* Ensure actions column is wide enough and visible */
 .styled-table td:last-child {
     white-space: nowrap;
-    min-width: 140px;
+    min-width: 200px;
     text-align: right;
 }
 
@@ -1430,6 +1430,102 @@ section.active-section {
     font-size: 0.75rem;
     color: var(--text-muted);
     margin-top: 2px;
+}
+
+/* --- Surcharge Config Button --- */
+.surcharge-config-btn {
+    background: rgba(251, 191, 36, 0.1);
+    border: 2px solid rgba(251, 191, 36, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #fbbf24;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.surcharge-config-btn:hover {
+    background: rgba(251, 191, 36, 0.2);
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+}
+
+/* --- WhatsApp Button --- */
+.btn-whatsapp {
+    background: rgba(37, 211, 102, 0.15);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+}
+
+.btn-whatsapp:hover {
+    background: rgba(37, 211, 102, 0.25);
+}
+
+/* --- Client History Content --- */
+.client-history-sale {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 8px;
+}
+
+.client-history-sale:last-child {
+    margin-bottom: 0;
+}
+
+.client-history-sale .meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+}
+
+.client-history-sale .items {
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+.client-history-empty {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.client-history-total {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* --- Surcharge Badge on Checkout Buttons --- */
+.surcharge-badge {
+    font-size: 0.65rem;
+    opacity: 0.8;
+    display: block;
+    font-weight: 400;
 }
 
 /* --- Balanza Toggle --- */
