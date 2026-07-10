@@ -505,7 +505,7 @@
                 <input type="hidden" id="debt-client-id">
                 <div class="form-group">
                     <label>Monto a Pagar ($)</label>
-                    <input type="number" id="debt-amount" min="1" step="0.01" required>
+                    <input type="number" id="debt-amount" min="1" step="0.01" required oninput="updateDebtSurchargeLabels()">
                 </div>
                 <div class="form-group">
                     <label>Deuda Actual: <span id="current-debt-display"
@@ -516,17 +516,22 @@
                     <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px;">
                         <button type="button" class="btn-payment-method selected" data-method="cash" onclick="selectDebtPaymentMethod(this)">
                             <i class="fa-solid fa-money-bill-wave"></i> Efectivo
+                            <small class="surcharge-badge" id="debt-surcharge-label-cash"></small>
                         </button>
                         <button type="button" class="btn-payment-method" data-method="transfer" onclick="selectDebtPaymentMethod(this)">
                             <i class="fa-solid fa-building-columns"></i> Transfer.
+                            <small class="surcharge-badge" id="debt-surcharge-label-transfer"></small>
                         </button>
                         <button type="button" class="btn-payment-method" data-method="mercadopago" onclick="selectDebtPaymentMethod(this)">
                             <i class="fa-solid fa-qrcode"></i> M. Pago
+                            <small class="surcharge-badge" id="debt-surcharge-label-mercadopago"></small>
                         </button>
                         <button type="button" class="btn-payment-method" data-method="tarjeta" onclick="selectDebtPaymentMethod(this)">
                             <i class="fa-solid fa-credit-card"></i> Tarjeta
+                            <small class="surcharge-badge" id="debt-surcharge-label-tarjeta"></small>
                         </button>
                     </div>
+                    <div id="debt-surcharge-info" style="margin-top:8px;font-size:0.85rem;color:#fbbf24;display:none;text-align:center;"></div>
                     <input type="hidden" id="debt-payment-method" value="cash">
                 </div>
                 <button type="submit" class="btn-primary full-width">Registrar Pago</button>
