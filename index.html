@@ -77,10 +77,12 @@
                         <input type="text" id="barcode-input" placeholder="Escanear código de barras..."
                             autocomplete="off" onkeypress="handleBarcodeInput(event)">
                     </div>
-                    <button class="balanza-toggle" id="balanza-toggle" onclick="toggleBalanzaMode()" title="Activar modo balanza para capturar peso automático desde balanza USB/Bluetooth">
+                    <button class="balanza-toggle" id="balanza-toggle" onclick="toggleBalanzaMode()"
+                        title="Activar modo balanza para capturar peso automático desde balanza USB/Bluetooth">
                         <i class="fa-solid fa-weight-scale"></i> <span>Balanza</span>
                     </button>
-                    <button class="surcharge-config-btn" onclick="openSurchargeConfig()" title="Configurar recargos por forma de pago">
+                    <button class="surcharge-config-btn" onclick="openSurchargeConfig()"
+                        title="Configurar recargos por forma de pago">
                         <i class="fa-solid fa-percentage"></i> <span>Recargos</span>
                     </button>
                     <div class="date-time" id="clock">12:00 PM</div>
@@ -99,10 +101,13 @@
                             <button class="tab" onclick="filterCategory('Fiambres')">Fiambres</button>
                             <button class="tab" onclick="filterCategory('Verduras')">Verduras</button>
                             <button class="tab" onclick="filterCategory('Varios')">Varios</button>
-                            <button class="tab" onclick="openWeightModal()" title="Vender por peso (balanza)" style="border-color: var(--success-color); color: var(--success-color);">
+                            <button class="tab" onclick="openWeightModal()" title="Vender por peso (balanza)"
+                                style="border-color: var(--success-color); color: var(--success-color);">
                                 <i class="fa-solid fa-weight-scale"></i> Peso
                             </button>
-                            <button class="tab" onclick="openQuickSaleModal()" title="Venta personalizada sin producto registrado" style="border-color: var(--accent); color: var(--accent);">
+                            <button class="tab" onclick="openQuickSaleModal()"
+                                title="Venta personalizada sin producto registrado"
+                                style="border-color: var(--accent); color: var(--accent);">
                                 <i class="fa-solid fa-pen"></i> Venta Rápida
                             </button>
                         </div>
@@ -206,6 +211,9 @@
                                     <i class="fa-solid fa-user-clock"></i> Fiar
                                     <small class="surcharge-badge" id="surcharge-label-credit"></small>
                                 </button>
+                                <button class="btn-split" onclick="openSplitPaymentModal()">
+                                    <i class="fa-solid fa-code-branch"></i> Dos Métodos
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -229,6 +237,13 @@
                         <i class="fa-solid fa-plus"></i> Nuevo Producto
                     </button>
                 </header>
+
+                <div style="padding: 0 0 12px 0;">
+                    <div style="position: relative;">
+                        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
+                        <input type="text" id="inventory-search" placeholder="Buscar por nombre, categoría, código de barras..." oninput="renderInventory()" style="width: 100%; padding: 10px 12px 10px 36px; border-radius: 10px; border: 1px solid rgba(148,163,184,0.2); background: rgba(15,23,42,0.6); color: #e2e8f0; font-family: var(--font-main); font-size: 0.9rem; outline: none; box-sizing: border-box;">
+                    </div>
+                </div>
 
                 <div class="table-container glass custom-scroll">
                     <table class="styled-table">
@@ -263,7 +278,8 @@
                                 title="Importar ventas"><i class="fa-solid fa-file-import"></i> Importar</button>
                             <input type="file" id="import-file" accept=".json, .xlsx, .xls" style="display:none"
                                 onchange="importData(this)">
-                            <button class="btn-small btn-backup" onclick="exportFullBackup()" title="Descargar backup completo: productos, ventas, clientes y cierres"
+                            <button class="btn-small btn-backup" onclick="exportFullBackup()"
+                                title="Descargar backup completo: productos, ventas, clientes y cierres"
                                 style="background: linear-gradient(135deg, #7c3aed, #4f46e5); border-color: #7c3aed; color: white; font-weight: 600;">
                                 <i class="fa-solid fa-database"></i> Backup Completo
                             </button>
@@ -315,8 +331,11 @@
                         <h2>Cierre de Caja Diario</h2>
                         <div class="action-buttons" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                             <div style="display:flex; gap:10px; align-items:center;">
-                                <label for="closure-date" style="color: var(--text-muted); font-size: 0.9rem;">Fecha</label>
-                                <input id="closure-date" type="date" class="client-select-input" style="padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white;" onchange="renderCashClosure()" />
+                                <label for="closure-date"
+                                    style="color: var(--text-muted); font-size: 0.9rem;">Fecha</label>
+                                <input id="closure-date" type="date" class="client-select-input"
+                                    style="padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white;"
+                                    onchange="renderCashClosure()" />
                             </div>
                             <button class="btn-small" onclick="renderCashClosure()" title="Actualizar">
                                 <i class="fa-solid fa-rotate"></i> Actualizar
@@ -330,36 +349,50 @@
                         <h3 style="margin-bottom: 12px;">Resumen del Día</h3>
                         <div class="closure-summary">
                             <div class="closure-row"><span>Ventas</span><span id="closure-sales-count">0</span></div>
-                            <div class="closure-row"><span>Total</span><span id="closure-total-display">$0.00</span></div>
-                            <div class="closure-row"><span>Efectivo</span><span id="closure-cash-display">$0.00</span></div>
-                            <div class="closure-row"><span>Transferencia</span><span id="closure-transfer-display">$0.00</span></div>
-                            <div class="closure-row"><span>Mercado Pago</span><span id="closure-mp-display">$0.00</span></div>
-                            <div class="closure-row"><span>Tarjeta</span><span id="closure-tarjeta-display">$0.00</span></div>
-                            <div class="closure-row"><span>Fiado (Cuenta Corriente)</span><span id="closure-credit-display">$0.00</span></div>
-                            <div class="closure-row"><span>Pago Deuda</span><span id="closure-debt-payment-display">$0.00</span></div>
+                            <div class="closure-row"><span>Total</span><span id="closure-total-display">$0.00</span>
+                            </div>
+                            <div class="closure-row"><span>Efectivo</span><span id="closure-cash-display">$0.00</span>
+                            </div>
+                            <div class="closure-row"><span>Transferencia</span><span
+                                    id="closure-transfer-display">$0.00</span></div>
+                            <div class="closure-row"><span>Mercado Pago</span><span id="closure-mp-display">$0.00</span>
+                            </div>
+                            <div class="closure-row"><span>Tarjeta</span><span id="closure-tarjeta-display">$0.00</span>
+                            </div>
+                            <div class="closure-row"><span>Fiado (Cuenta Corriente)</span><span
+                                    id="closure-credit-display">$0.00</span></div>
+                            <div class="closure-row"><span>Pago Deuda</span><span
+                                    id="closure-debt-payment-display">$0.00</span></div>
                         </div>
                     </div>
 
                     <div class="glass" style="padding: 18px; border-radius: 16px;">
                         <h3 style="margin-bottom: 12px;">Arqueo</h3>
                         <div class="closure-summary">
-                            <div class="closure-row"><span>Efectivo esperado</span><span id="closure-cash-expected-display">$0.00</span></div>
+                            <div class="closure-row"><span>Efectivo esperado</span><span
+                                    id="closure-cash-expected-display">$0.00</span></div>
                             <div class="closure-row" style="align-items:center;">
                                 <span>Efectivo contado</span>
-                                <input id="closure-cash-counted" type="number" min="0" step="0.01" placeholder="0" style="width: 140px; padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white;" oninput="recalcCashClosureDiff()" />
+                                <input id="closure-cash-counted" type="number" min="0" step="0.01" placeholder="0"
+                                    style="width: 140px; padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white;"
+                                    oninput="recalcCashClosureDiff()" />
                             </div>
-                            <div class="closure-row"><span>Diferencia</span><span id="closure-diff-display">$0.00</span></div>
+                            <div class="closure-row"><span>Diferencia</span><span id="closure-diff-display">$0.00</span>
+                            </div>
                         </div>
 
                         <div style="display:flex; gap:10px; margin-top: 14px; flex-wrap:wrap;">
-                            <button class="btn-primary" onclick="closeCashDay()" id="btn-close-day" style="border-radius: 12px; padding: 12px 16px;">
+                            <button class="btn-primary" onclick="closeCashDay()" id="btn-close-day"
+                                style="border-radius: 12px; padding: 12px 16px;">
                                 <i class="fa-solid fa-lock"></i> Cerrar Día
                             </button>
-                            <button class="btn-small" onclick="reopenCashDay()" id="btn-reopen-day" title="Eliminar cierre y reabrir" style="display:none;">
+                            <button class="btn-small" onclick="reopenCashDay()" id="btn-reopen-day"
+                                title="Eliminar cierre y reabrir" style="display:none;">
                                 <i class="fa-solid fa-unlock"></i> Reabrir
                             </button>
                         </div>
-                        <small id="closure-status" style="display:block; margin-top:10px; color: var(--text-muted);"></small>
+                        <small id="closure-status"
+                            style="display:block; margin-top:10px; color: var(--text-muted);"></small>
                     </div>
                 </div>
 
@@ -396,6 +429,13 @@
                         <i class="fa-solid fa-user-plus"></i> Nuevo Cliente
                     </button>
                 </header>
+
+                <div style="padding: 0 0 12px 0;">
+                    <div style="position: relative;">
+                        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
+                        <input type="text" id="clients-search" placeholder="Buscar por nombre o teléfono..." oninput="renderClients()" style="width: 100%; padding: 10px 12px 10px 36px; border-radius: 10px; border: 1px solid rgba(148,163,184,0.2); background: rgba(15,23,42,0.6); color: #e2e8f0; font-family: var(--font-main); font-size: 0.9rem; outline: none; box-sizing: border-box;">
+                    </div>
+                </div>
 
                 <div class="table-container glass custom-scroll">
                     <table class="styled-table">
@@ -475,8 +515,10 @@
                     <label>Foto del Producto (Opcional)</label>
                     <input type="file" id="new-prod-image" accept="image/*" onchange="previewProductImage(event)">
                     <div id="prod-image-preview" style="margin-top:8px;display:none;">
-                        <img src="" alt="Vista previa" style="max-width:100px;max-height:100px;border-radius:8px;border:1px solid var(--glass-border);">
-                        <button type="button" onclick="clearProductImage()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:0.8rem;margin-top:4px;display:block;">
+                        <img src="" alt="Vista previa"
+                            style="max-width:100px;max-height:100px;border-radius:8px;border:1px solid var(--glass-border);">
+                        <button type="button" onclick="clearProductImage()"
+                            style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:0.8rem;margin-top:4px;display:block;">
                             <i class="fa-solid fa-trash-can"></i> Quitar foto
                         </button>
                     </div>
@@ -516,7 +558,8 @@
                 <input type="hidden" id="debt-client-id">
                 <div class="form-group">
                     <label>Monto a Pagar ($)</label>
-                    <input type="number" id="debt-amount" min="1" step="0.01" required oninput="updateDebtSurchargeLabels()">
+                    <input type="number" id="debt-amount" min="1" step="0.01" required
+                        oninput="updateDebtSurchargeLabels()">
                 </div>
                 <div class="form-group">
                     <label>Deuda Actual: <span id="current-debt-display"
@@ -525,24 +568,29 @@
                 <div class="form-group">
                     <label>Método de Pago</label>
                     <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px;">
-                        <button type="button" class="btn-payment-method selected" data-method="cash" onclick="selectDebtPaymentMethod(this)">
+                        <button type="button" class="btn-payment-method selected" data-method="cash"
+                            onclick="selectDebtPaymentMethod(this)">
                             <i class="fa-solid fa-money-bill-wave"></i> Efectivo
                             <small class="surcharge-badge" id="debt-surcharge-label-cash"></small>
                         </button>
-                        <button type="button" class="btn-payment-method" data-method="transfer" onclick="selectDebtPaymentMethod(this)">
+                        <button type="button" class="btn-payment-method" data-method="transfer"
+                            onclick="selectDebtPaymentMethod(this)">
                             <i class="fa-solid fa-building-columns"></i> Transfer.
                             <small class="surcharge-badge" id="debt-surcharge-label-transfer"></small>
                         </button>
-                        <button type="button" class="btn-payment-method" data-method="mercadopago" onclick="selectDebtPaymentMethod(this)">
+                        <button type="button" class="btn-payment-method" data-method="mercadopago"
+                            onclick="selectDebtPaymentMethod(this)">
                             <i class="fa-solid fa-qrcode"></i> M. Pago
                             <small class="surcharge-badge" id="debt-surcharge-label-mercadopago"></small>
                         </button>
-                        <button type="button" class="btn-payment-method" data-method="tarjeta" onclick="selectDebtPaymentMethod(this)">
+                        <button type="button" class="btn-payment-method" data-method="tarjeta"
+                            onclick="selectDebtPaymentMethod(this)">
                             <i class="fa-solid fa-credit-card"></i> Tarjeta
                             <small class="surcharge-badge" id="debt-surcharge-label-tarjeta"></small>
                         </button>
                     </div>
-                    <div id="debt-surcharge-info" style="margin-top:8px;font-size:0.85rem;color:#fbbf24;display:none;text-align:center;"></div>
+                    <div id="debt-surcharge-info"
+                        style="margin-top:8px;font-size:0.85rem;color:#fbbf24;display:none;text-align:center;"></div>
                     <input type="hidden" id="debt-payment-method" value="cash">
                 </div>
                 <button type="submit" class="btn-primary full-width">Registrar Pago</button>
@@ -564,14 +612,16 @@
                 <div class="form-group">
                     <label>Peso (kg)</label>
                     <input type="number" id="weight-kg" step="0.001" min="0.001" required placeholder="Ej: 1.200">
-                    <small style="color: var(--text-muted); display: block; margin-top: 4px;">Conectá la balanza y poné el producto. El peso se captura automático si el modo balanza está activado.</small>
+                    <small style="color: var(--text-muted); display: block; margin-top: 4px;">Conectá la balanza y poné
+                        el producto. El peso se captura automático si el modo balanza está activado.</small>
                 </div>
                 <div class="form-group">
                     <label>Precio por kg ($)</label>
                     <input type="number" id="weight-price-kg" step="0.01" min="0.01" required placeholder="Ej: 1200">
                 </div>
                 <div class="form-group" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
-                    <label style="font-weight: 700; color: var(--success-color);">Total: $<span id="weight-total-preview">0.00</span></label>
+                    <label style="font-weight: 700; color: var(--success-color);">Total: $<span
+                            id="weight-total-preview">0.00</span></label>
                 </div>
                 <button type="submit" class="btn-primary full-width">
                     <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
@@ -609,12 +659,98 @@
         </div>
     </div>
 
+    <!-- Split Payment Modal (Dos Métodos de Pago) -->
+    <div id="split-payment-modal" class="modal">
+        <div class="modal-content glass" style="width: 440px;">
+            <span class="close-modal" onclick="closeModal('split-payment-modal')">&times;</span>
+            <h3><i class="fa-solid fa-code-branch"></i> Dos Métodos de Pago</h3>
+            <p id="split-client-name" style="margin-bottom: 10px; color: var(--text-secondary); font-size: 0.85rem;">
+                Cliente: Consumidor Final</p>
+
+            <div id="split-summary-box"
+                style="background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; text-align: center;">
+                <span style="color: var(--text-muted); font-size: 0.85rem;">Subtotal carrito:</span>
+                <span id="split-subtotal-display"
+                    style="font-weight: bold; font-size: 1.1rem; color: #fbbf24; margin-left: 6px;">$0.00</span>
+            </div>
+
+            <!-- Método 1 -->
+            <div style="margin-bottom: 14px;">
+                <label style="display:block; margin-bottom:6px; font-size:0.9rem; color: var(--text-muted);">1er Método
+                    de Pago</label>
+                <select id="split-method-1" class="form-group"
+                    style="width:100%; padding:10px; border-radius:8px; background:#0f172a; color:#e2e8f0; border:1px solid rgba(148,163,184,0.2); font-family: var(--font-main); font-size:0.9rem;"
+                    onchange="updateSplitCalculation()">
+                    <option value="cash">Efectivo</option>
+                    <option value="transfer">Transferencia</option>
+                    <option value="mercadopago">Mercado Pago</option>
+                    <option value="tarjeta">Tarjeta / Débito</option>
+                </select>
+                <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+                    <input type="number" id="split-amount-1" min="0.01" step="0.01" placeholder="Monto..."
+                        style="flex:1; padding:8px 10px; border-radius:8px; background:#0f172a; color:#e2e8f0; border:1px solid rgba(148,163,184,0.2); font-family: var(--font-main); font-size:0.9rem;"
+                        oninput="updateSplitCalculation()">
+                    <small id="split-surcharge-info-1"
+                        style="color:#fbbf24; white-space:nowrap; min-width:60px; text-align:right;"></small>
+                </div>
+            </div>
+
+            <!-- Método 2 -->
+            <div style="margin-bottom: 14px;">
+                <label style="display:block; margin-bottom:6px; font-size:0.9rem; color: var(--text-muted);">2do Método
+                    de Pago <small style="color:#22c55e;">(saldo restante)</small></label>
+                <select id="split-method-2" class="form-group"
+                    style="width:100%; padding:10px; border-radius:8px; background:#0f172a; color:#e2e8f0; border:1px solid rgba(148,163,184,0.2); font-family: var(--font-main); font-size:0.9rem;"
+                    onchange="updateSplitCalculation()">
+                    <option value="cash">Efectivo</option>
+                    <option value="transfer">Transferencia</option>
+                    <option value="mercadopago" selected>Mercado Pago</option>
+                    <option value="tarjeta">Tarjeta / Débito</option>
+                </select>
+                <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+                    <input type="text" id="split-amount-2" readonly
+                        style="flex:1; padding:8px 10px; border-radius:8px; background:#1e293b; color:#22c55e; border:1px solid rgba(34,197,94,0.3); font-family: var(--font-main); font-size:0.9rem; font-weight:bold;">
+                    <small id="split-surcharge-info-2"
+                        style="color:#fbbf24; white-space:nowrap; min-width:60px; text-align:right;"></small>
+                </div>
+            </div>
+
+            <!-- Resumen -->
+            <div id="split-validation-msg"
+                style="display:none; background: rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:8px 12px; margin-bottom:12px; color:#fca5a5; font-size:0.85rem; text-align:center;">
+            </div>
+
+            <div style="background: rgba(148,163,184,0.1); border-radius:8px; padding:10px 14px; margin-bottom:16px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:0.85rem;">
+                    <span style="color: var(--text-muted);">Subtotal:</span>
+                    <span id="split-total-subtotal">$0.00</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:0.85rem;"
+                    id="split-recargo-row" style="display:none;">
+                    <span style="color: #fbbf24;">Recargos:</span>
+                    <span id="split-total-recargo" style="color: #fbbf24;">$0.00</span>
+                </div>
+                <div
+                    style="display:flex; justify-content:space-between; font-weight:bold; font-size:1rem; border-top: 1px solid rgba(148,163,184,0.2); padding-top:6px; margin-top:4px;">
+                    <span>Total a cobrar:</span>
+                    <span id="split-total-final" style="color: #22c55e;">$0.00</span>
+                </div>
+            </div>
+
+            <button type="button" class="btn-primary full-width" id="btn-confirm-split" onclick="confirmSplitPayment()"
+                style="padding: 12px;">
+                <i class="fa-solid fa-check-circle"></i> Confirmar Venta
+            </button>
+        </div>
+    </div>
+
     <!-- Surcharge Config Modal -->
     <div id="surcharge-config-modal" class="modal">
         <div class="modal-content glass">
             <span class="close-modal" onclick="closeModal('surcharge-config-modal')">&times;</span>
             <h3>Configurar Recargos por Forma de Pago</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Porcentaje de recargo que se suma al total según el método de pago.</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Porcentaje de recargo que se
+                suma al total según el método de pago.</p>
             <form id="surcharge-config-form" onsubmit="saveSurchargeConfig(event)">
                 <div class="form-group">
                     <label>Efectivo (%)</label>
@@ -650,10 +786,12 @@
                 <!-- History injected by JS -->
             </div>
             <div style="display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;">
-                <button class="btn-secondary" id="btn-toggle-history" onclick="showClientHistory(clientHistoryCurrentId, true)" style="flex: 1; min-width: 120px;">
+                <button class="btn-secondary" id="btn-toggle-history"
+                    onclick="showClientHistory(clientHistoryCurrentId, true)" style="flex: 1; min-width: 120px;">
                     <i class="fa-solid fa-eye"></i> Mostrar todo
                 </button>
-                <button class="btn-primary" style="flex: 1; min-width: 120px;" id="btn-send-whatsapp" onclick="sendWhatsAppSummary()">
+                <button class="btn-primary" style="flex: 1; min-width: 120px;" id="btn-send-whatsapp"
+                    onclick="sendWhatsAppSummary()">
                     <i class="fa-brands fa-whatsapp"></i> WhatsApp
                 </button>
             </div>
@@ -669,7 +807,8 @@
             <p style="color: var(--text-secondary); margin-bottom: 8px; font-size: 0.95rem;">
                 Esto <strong style="color: #ef4444;">reemplazará TODOS los datos actuales</strong>:
             </p>
-            <ul style="text-align: left; color: var(--text-muted); font-size: 0.9rem; margin: 10px 0 18px 20px; line-height: 1.8;">
+            <ul
+                style="text-align: left; color: var(--text-muted); font-size: 0.9rem; margin: 10px 0 18px 20px; line-height: 1.8;">
                 <li>📦 Productos e inventario</li>
                 <li>🧾 Historial de ventas</li>
                 <li>👤 Clientes y deudas</li>
@@ -683,7 +822,8 @@
                 <button class="btn-secondary" onclick="closeModal('restore-confirm-modal')" style="flex: 1;">
                     <i class="fa-solid fa-xmark"></i> Cancelar
                 </button>
-                <button id="btn-confirm-restore" class="btn-primary" style="flex: 1; background: linear-gradient(135deg, #059669, #047857); border: none;">
+                <button id="btn-confirm-restore" class="btn-primary"
+                    style="flex: 1; background: linear-gradient(135deg, #059669, #047857); border: none;">
                     <i class="fa-solid fa-check"></i> Sí, restaurar
                 </button>
             </div>

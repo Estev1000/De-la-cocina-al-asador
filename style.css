@@ -809,6 +809,14 @@ section.active-section {
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
 }
 
+.btn-split {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.btn-split:hover {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+}
+
 .empty-cart-msg {
     display: flex;
     flex-direction: column;
@@ -1420,6 +1428,12 @@ section.active-section {
     background: rgba(107, 114, 128, 0.2);
     color: #9ca3af;
     border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+.badge-split {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .client-select-input {
