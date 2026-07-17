@@ -186,6 +186,60 @@
                                 <span>Subtotal</span>
                                 <span id="subtotal-display">$0.00</span>
                             </div>
+
+                            <!-- Redondeo -->
+                            <div class="adjustment-section" id="rounding-section">
+                                <div class="adjustment-header">
+                                    <label class="adjustment-label">
+                                        <input type="checkbox" id="rounding-toggle" onchange="toggleRounding()">
+                                        <i class="fa-solid fa-arrows-up-down-left-right"></i> Redondeo
+                                    </label>
+                                </div>
+                                <div class="adjustment-body" id="rounding-body" style="display:none;">
+                                    <div class="adjustment-controls">
+                                        <select id="rounding-mode" class="adjustment-select" onchange="recalcTotal()">
+                                            <option value="up">Hacia arriba ↑</option>
+                                            <option value="down">Hacia abajo ↓</option>
+                                            <option value="nearest">Más cercano ≈</option>
+                                        </select>
+                                        <select id="rounding-multiple" class="adjustment-select" onchange="recalcTotal()">
+                                            <option value="5">$5</option>
+                                            <option value="10" selected>$10</option>
+                                            <option value="50">$50</option>
+                                            <option value="100">$100</option>
+                                        </select>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Ajuste (+/-)</span>
+                                        <span id="rounding-display">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bonificación -->
+                            <div class="adjustment-section" id="bonification-section">
+                                <div class="adjustment-header">
+                                    <label class="adjustment-label">
+                                        <input type="checkbox" id="bonification-toggle" onchange="toggleBonification()">
+                                        <i class="fa-solid fa-percent"></i> Bonificación
+                                    </label>
+                                </div>
+                                <div class="adjustment-body" id="bonification-body" style="display:none;">
+                                    <div class="adjustment-controls">
+                                        <select id="bonification-type" class="adjustment-select" onchange="recalcTotal()">
+                                            <option value="fixed">Monto fijo ($)</option>
+                                            <option value="percent">Porcentaje (%)</option>
+                                        </select>
+                                        <input type="number" id="bonification-value" class="adjustment-input" 
+                                            min="0" step="0.01" value="0" placeholder="0.00" oninput="recalcTotal()">
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Descuento (-)</span>
+                                        <span id="bonification-display">-$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="summary-row total">
                                 <span>Total</span>
                                 <span id="total-display">$0.00</span>

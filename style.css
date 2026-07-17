@@ -740,6 +740,90 @@ section.active-section {
     padding-top: 10px;
 }
 
+.adjustment-section {
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.adjustment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adjustment-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin: 0;
+    font-weight: 500;
+}
+
+.adjustment-label input[type="checkbox"] {
+    accent-color: var(--primary-color);
+    width: 14px;
+    height: 14px;
+}
+
+.adjustment-body {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.adjustment-controls {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.adjustment-select,
+.adjustment-input {
+    flex: 1;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 0.8rem;
+    font-family: var(--font-main);
+}
+
+.adjustment-select {
+    cursor: pointer;
+}
+
+.adjustment-input {
+    max-width: 100px;
+    text-align: right;
+}
+
+.adjustment-input::-webkit-outer-spin-button,
+.adjustment-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.adjustment-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#rounding-display {
+    color: #fbbf24;
+    font-weight: 600;
+}
+
+#bonification-display {
+    color: #f87171;
+    font-weight: 600;
+}
+
 .checkout-buttons {
     display: flex;
     flex-wrap: wrap;
