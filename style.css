@@ -299,11 +299,53 @@ section.active-section {
 }
 
 .client-credit-history {
-    margin-bottom: 12px;
-    padding: 12px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+}
+
+.client-credit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.client-credit-header h4 {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+.client-credit-debt {
+    color: #fbbf24;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.client-credit-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+#client-credit-chevron {
+    transition: transform 0.2s;
+}
+
+.client-credit-list {
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .client-credit-history h4 {
@@ -626,18 +668,18 @@ section.active-section {
     min-width: 320px;
     max-width: 450px;
     border-radius: 16px;
-    padding: 20px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    /* Contain inner scroll */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .current-order h3 {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-weight: 600;
     border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 
 .order-items {
@@ -720,13 +762,14 @@ section.active-section {
 .order-summary {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 12px;
-    padding: 15px;
+    padding: 12px;
+    flex-shrink: 0;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-size: 0.9rem;
     color: var(--text-muted);
 }
@@ -741,10 +784,10 @@ section.active-section {
 }
 
 .adjustment-section {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 8px;
-    padding: 8px;
+    padding: 6px 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -828,18 +871,18 @@ section.active-section {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .checkout-buttons button {
     flex: 1 1 calc(50% - 4px);
     min-width: 0;
-    padding: 10px;
+    padding: 8px;
     border: none;
     border-radius: 10px;
     color: white;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     cursor: pointer;
     transition: transform 0.2s;
     display: flex;
